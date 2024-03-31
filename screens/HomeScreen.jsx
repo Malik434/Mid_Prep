@@ -10,7 +10,7 @@ export default function HomeScreen() {
 			<Text>Navigate to the Details screen</Text>
 			<TouchableOpacity
 				style={styles.button}
-				onPress={() => navigation.navigate("Details")}>
+				onPress={() => navigation.navigate("About")}>
 				<Text style={styles.buttonText}>Go to Details</Text>
 			</TouchableOpacity>
 		</View>

@@ -13,7 +13,7 @@ const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const DetailsScreen = () => {
+const AboutScreen = () => {
 	return <Text>Details</Text>;
 };
 
@@ -36,8 +36,15 @@ export default function App() {
 					}}
 				/>
 				<Stack.Screen
-					name='Details'
-					component={DetailsScreen}
+					name='Store'
+					component={StoreScreen}
+					options={{
+						title: "Store",
+					}}
+				/>
+				<Stack.Screen
+					name='About'
+					component={AboutScreen}
 					options={{
 						gestureEnabled: false,
 					}}
@@ -70,9 +77,18 @@ export default function App() {
 						),
 					}}
 				/>
+        <Drawer.Screen
+					name='Store'
+					component={StoreScreen}
+					options={{
+						drawerIcon: ({ focused, color, size }) => (
+							<Feather name='box' size={size} color={color} />
+						),
+					}}
+				/>
 				<Drawer.Screen
-					name='Details'
-					component={DetailsScreen}
+					name='About'
+					component={AboutScreen}
 					options={{
 						drawerIcon: ({ focused, color, size }) => (
 							<Feather name='info' size={size} color={color} />
@@ -115,6 +131,15 @@ export default function App() {
 					options={{
 						tabBarIcon: ({ focused, color, size }) => (
 							<Feather name='box' size={size} color={color} />
+						),
+					}}
+				/>
+				<Tab.Screen
+					name='About'
+					component={AboutScreen}
+					options={{
+						tabBarIcon: ({ focused, color, size }) => (
+							<Feather name='info' size={size} color={color} />
 						),
 					}}
 				/>
