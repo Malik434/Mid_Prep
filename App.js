@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
 import HomeScreen from "./screens/HomeScreen";
+import StoreScreen from "./screens/StoreScreen";
 
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
@@ -83,10 +84,6 @@ export default function App() {
 			{/* Bottom Navigation */}
 			<Tab.Navigator
 				initialRouteName='Home'
-				tabBarOptions={{
-					activeTintColor: "tomato",
-					inactiveTintColor: "white",
-				}}
 				screenOptions={{
 					headerStyle: {
 						backgroundColor: "#227398",
@@ -95,6 +92,8 @@ export default function App() {
 					headerTitleStyle: {
 						fontWeight: "bold",
 					},
+					tabBarActiveTintColor: "tomato",
+					tabBarInactiveTintColor: "white",
 					tabBarStyle: {
 						backgroundColor: "#227398",
 						padding: 10,
@@ -111,11 +110,11 @@ export default function App() {
 					}}
 				/>
 				<Tab.Screen
-					name='Details'
-					component={DetailsScreen}
+					name='Store'
+					component={StoreScreen}
 					options={{
 						tabBarIcon: ({ focused, color, size }) => (
-							<Feather name='info' size={size} color={color} />
+							<Feather name='box' size={size} color={color} />
 						),
 					}}
 				/>
