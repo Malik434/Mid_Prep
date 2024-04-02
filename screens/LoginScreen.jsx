@@ -8,8 +8,13 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import useAuth from "../hooks/UserHook";
+import { useTheme } from "../context/ThemeContext";
+import { styles } from "../styles/style";
 
 const LoginScreen = () => {
+	const { theme } = useTheme();
+	const dynamicStyles = styles(theme);
+
 	const navigation = useNavigation();
 	const { signIn } = useAuth();
 
@@ -33,74 +38,38 @@ const LoginScreen = () => {
 	};
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Login</Text>
+		<View style={dynamicStyles.container}>
+			<Text style={dynamicStyles.title}>Login</Text>
 			<TextInput
-				style={styles.input}
+				style={dynamicStyles.input}
 				placeholder='Email'
+				placeholderTextColor={theme.textColor}
 				value={email}
 				onChangeText={setEmail}
 				autoCapitalize='none'
 				keyboardType='email-address'
 			/>
 			<TextInput
-				style={styles.input}
+				style={dynamicStyles.input}
 				placeholder='Password'
+				placeholderTextColor={theme.textColor}
 				value={password}
 				onChangeText={setPassword}
 				secureTextEntry
 			/>
-			<TouchableOpacity style={styles.button} onPress={handleLogin}>
-				<Text style={styles.buttonText}>Login</Text>
+			<TouchableOpacity style={dynamicStyles.button} onPress={handleLogin}>
+				<Text style={dynamicStyles.buttonText}>Login</Text>
 			</TouchableOpacity>
 
 			<TouchableOpacity
-				style={styles.buttonSecondary}
+				style={dynamicStyles.buttonSecondary}
 				onPress={() => navigation.navigate("Register")}>
-				<Text>Don't have an account? Register</Text>
+				<Text style={dynamicStyles.paragraph}>
+					Don't have an account? Register
+				</Text>
 			</TouchableOpacity>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "#fff",
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: "bold",
-		marginBottom: 20,
-	},
-	input: {
-		width: "80%",
-		height: 50,
-		borderWidth: 1,
-		borderColor: "#ccc",
-		borderRadius: 10,
-		paddingHorizontal: 15,
-		marginBottom: 20,
-		fontSize: 16,
-	},
-	button: {
-		width: "80%",
-		height: 50,
-		backgroundColor: "#007bff",
-		justifyContent: "center",
-		alignItems: "center",
-		borderRadius: 10,
-	},
-	buttonText: {
-		fontSize: 18,
-		fontWeight: "bold",
-		color: "#fff",
-	},
-	buttonSecondary: {
-		marginTop: 20,
-	},
-});
 
 export default LoginScreen;

@@ -3,10 +3,12 @@ import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
 import { Modal } from "react-native";
 import useAuth from "../hooks/UserHook";
 import { Avatar } from "react-native-paper";
+import { useTheme } from "../context/ThemeContext";
 
 const ProfileDropdown = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const { signOutUser } = useAuth();
+	const { isDarkMode, toggleDarkMode } = useTheme();
 
 	const handleAvatarPress = () => {
 		setIsVisible(!isVisible); // Toggle the dropdown visibility
@@ -34,10 +36,10 @@ const ProfileDropdown = () => {
 					<TouchableOpacity
 						style={styles.option}
 						onPress={() => {
-							// Handle profile option press
+							toggleDarkMode();
 							setIsVisible(false); // Hide the dropdown after selection
 						}}>
-						<Text>Profile</Text>
+						<Text>{isDarkMode ? "Light" : "Dark"} Mode</Text>
 					</TouchableOpacity>
 					<TouchableOpacity
 						style={styles.option}
