@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen";
 import StoreScreen from "./screens/StoreScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
+import About from "./screens/About";
 
 import ProfileDropdown from "./components/ProfileDropdown";
 
@@ -18,9 +19,9 @@ import { useTheme } from "./context/ThemeContext";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const AboutScreen = () => {
-	return <Text>Details</Text>;
-};
+// const AboutScreen = () => {
+// 	return <Text>Details</Text>;
+// };
 
 export default function MainApp() {
 	const { user } = useAuth();
@@ -74,7 +75,7 @@ export default function MainApp() {
 					/>
 					<Tab.Screen
 						name='About'
-						component={AboutScreen}
+						component={About}
 						options={{
 							tabBarIcon: ({ focused, color, size }) => (
 								<Feather name='info' size={size} color={color} />
