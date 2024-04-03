@@ -4,6 +4,10 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 } from "firebase/auth";
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+// const auth = initializeAuth(app, {
+//   persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+// });
 import auth from "../config/firebase";
 
 const useAuth = () => {
