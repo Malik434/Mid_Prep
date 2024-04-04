@@ -41,13 +41,13 @@ const ProfileDropdown = () => {
 						}}>
 						<Text>{isDarkMode ? "Light" : "Dark"} Mode</Text>
 					</TouchableOpacity>
-					<TouchableOpacity
+					{/* <TouchableOpacity
 						style={styles.option}
 						onPress={() => {
 							handleSignOut();
 						}}>
 						<Text>Logout</Text>
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 				</View>
 			</Modal>
 		</View>

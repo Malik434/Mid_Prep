@@ -4,8 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { styles } from "../styles/style";
 import { useTheme } from "../context/ThemeContext";
 import booksData from '../data/Books.json'; // Import the local JSON file
-import BookSearch from "../components/BookSearch";
-import SideToggle from "../components/SideToggle";
 
 export default function BookShelfScreen() {
     const { theme } = useTheme();
@@ -14,9 +12,9 @@ export default function BookShelfScreen() {
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
 
-    const onRefresh = () => {
+    const onRefresh = async () => {
         setRefreshing(true);
-        fetchData();
+        await fetchData();
         setRefreshing(false);
     };
 
